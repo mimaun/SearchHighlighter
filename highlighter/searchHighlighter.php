@@ -54,7 +54,6 @@ function curPageURL() {
 ?>
 	    <h1> Click a word </h1>
 		
-		<div id="alltext">
 
 <?php
 
@@ -65,7 +64,6 @@ function curPageURL() {
 	}
 ?>
 
-	</div>
 
 </body>
 </html>

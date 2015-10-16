@@ -3,26 +3,32 @@
 window.onload = function() { 
 // fill in this anonymous function's  body and add other functions as needed.
 
-    var allText = $("#alltext").text();
-    var temp = allText.split("\n");
-    console.log(temp);
-    var allwords = [];
+    // get all words from <p>.
+    var allText = $("p").text();
+    var allwords = allText.split(/[,.\n\s!?()]+/);
+    var spanList = [];
 
-    $.each(temp, function(i, val) { 
-        if(val != "" || val != " ") {
-            if(val.match("\n")) 
-                allwords.push(val.split("\n"));
-            if(val.match(",")) 
-                allwords.push(val.split(","));
-            else 
-                allwords.push(val);
-    });
+    // add class, class's name should be same each lowercase word.
+    $.each(allwords, function(i, val) { 
 
-    // $.each(allwords, function(i, val) {
-    //     var newSpan = $("<span>" + val + "</span>");
-    //     newSpan.addClass("word");
-    //     console.log(val + ".");
-    // });
+        // avoid null.
+        if(val != undefined) {
+            var newSpan = $('<span>' + val + '</span>');
+            newSpan.addClass(val.toLowerCase());
+            spanList.push(newSpan);
+        } 
+        // delete null.
+        else 
+            allwords.splice(i, 1);
+    }); 
+
+    // click event.
+
+    // remove highlight class from all words.
+
+    // search same word by class name.
+    
+    // create and add "highlight" class, it should highlight word.
 
 };
 
