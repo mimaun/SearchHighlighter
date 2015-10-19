@@ -9,21 +9,26 @@ window.onload = function() {
     var allLines= allText.split(/[\n]+/);
     var allwords = []
 
-    $.each(allLines, function(i, val) { 
-        // var wordArr = val.split(/[,.\s!?()]+/);
+    for(var i = 0; i < allLines.length; i++) {
+
+        var val = allLines[i];
         var wordArr = val.split(/[\s]+/);
-        $.each(wordArr, function(i, val) { 
+
+        for(var j = 0; j < wordArr.length; j++) {
+            var val = wordArr[j];
             if(val != undefined) 
                 allwords.push(val);
-        });
+        }
+
         allwords.push("\n");
-    });
+    }
 
     // add class, class's name should be same each lowercase word.
-    $.each(allwords, function(i, val) { 
+    for(var i = 0; i < allwords.length; i++) {
 
         var newSpan;
         var isSplitCharAtEnd = false;
+        var val = allwords[i];
 
         // avoid null.
         if(val != undefined) {
@@ -78,7 +83,6 @@ window.onload = function() {
             // print to screen.
             if(val == "\n") {
                 $("body").append("<br>");
-                return true;
             }
             else {
                 $("body").append(newSpan); 
@@ -91,7 +95,7 @@ window.onload = function() {
         // delete null.
         else 
             allwords.splice(i, 1); 
-    }); 
+    }
 
     console.log("I've done.");
 };
@@ -124,7 +128,6 @@ function clickWord() {
     $("span").each(function(i) { 
         if($(this).attr("class") == word) {
             $(this).addClass("highlight");
-            console.log("found");
         }
     });
 
